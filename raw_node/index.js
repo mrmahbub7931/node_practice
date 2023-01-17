@@ -4,8 +4,7 @@
 
 // Dependencies
 const http = require('http');
-const url = require('url');
-
+const {handleReqRes} = require('./helpers/handleReqRes');
 // module scaffolding
 const app = {};
 
@@ -25,16 +24,6 @@ app.createServer = () => {
 
 // hanlde request and response
 
-app.handleReqRes = (req, res) => {
-    // Request handle
-    // get the url and parse
-    const parsedUrl = url.parse(req.url,true);
-    const trimmedPath = parsedUrl.pathname.replace(/^\/+|\/+$/g,'');
-    const method = req.method.toLowerCase();
-    console.log(trimmedPath,method);
-    // Response handle
-    res.end("Hello Programmers!");
-}
-
+app.handleReqRes = handleReqRes;
 // start the server
 app.createServer();
